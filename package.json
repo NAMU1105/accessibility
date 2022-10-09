@@ -1,7 +1,7 @@
 {
-  "name": "chrome-extension-boilerplate-react-vite",
+  "name": "accessibility",
   "version": "0.0.1",
-  "description": "chrome extension boilerplate",
+  "description": "chrome extension for accessibility support",
   "license": "MIT",
   "repository": {
     "type": "git",

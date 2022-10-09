@@ -12,9 +12,7 @@ const manifest: ManifestType = {
     default_popup: "src/pages/popup/index.html",
     default_icon: "icon-34.png",
   },
-  chrome_url_overrides: {
-    newtab: "src/pages/newtab/index.html",
-  },
+  chrome_url_overrides: {},
   icons: {
     "128": "icon-128.png",
   },
@@ -25,7 +23,6 @@ const manifest: ManifestType = {
       css: ["assets/css/contentStyle.chunk.css"],
     },
   ],
-  devtools_page: "src/pages/devtools/index.html",
   web_accessible_resources: [
     {
       resources: [

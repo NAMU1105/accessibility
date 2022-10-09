@@ -5,5 +5,9 @@ export default function App() {
     console.log("content view loaded");
   }, []);
 
-  return <div className="content-view">content view</div>;
+  return (
+    <a className="fab" id="accessibilityFab" href="#accessibilityMenu">
+      fab
+    </a>
+  );
 }
