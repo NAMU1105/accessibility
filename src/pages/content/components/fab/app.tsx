@@ -6,7 +6,7 @@ export default function App() {
   }, []);
 
   return (
-    <a className="fab" href="#accessibilityMenu">
+    <a className="fab" id="accessibilityFab" href="#accessibilityMenu">
       fab
     </a>
   );
