@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-export default function App() {
+export default function Fab() {
   useEffect(() => {
     console.log("content view loaded");
   }, []);

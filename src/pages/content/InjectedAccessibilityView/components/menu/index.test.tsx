@@ -1,13 +1,13 @@
 import { render, screen } from "@testing-library/react";
-import App from "@pages/content/components/fab/app";
+import Menu from "@src/pages/content/InjectedAccessibilityView/components/menu";
 
-describe("appTest", () => {
+describe("menu test", () => {
   test("render text", () => {
     // given
-    const text = "content view";
+    const text = "fab";
 
     // when
-    render(<App />);
+    render(<Menu />);
 
     // then
     screen.getByText(text);

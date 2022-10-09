@@ -150,6 +150,7 @@ export default {
   // testLocationInResults: false,
 
   // The glob patterns Jest uses to detect test files
+  // default라서 주석처리된 상태임
   // testMatch: [
   //   "**/__tests__/**/*.[jt]s?(x)",
   //   "**/?(*.)+(spec|test).[tj]s?(x)"
