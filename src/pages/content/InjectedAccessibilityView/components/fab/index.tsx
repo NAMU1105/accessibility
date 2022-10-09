@@ -1,13 +1,22 @@
 import { useEffect } from "react";
 
-export default function Fab() {
+// interface Props extends
+interface Props {
+  onClick: () => void;
+}
+
+const Fab: React.FC<Props> = (props: Props) => {
+  const { onClick } = props;
+
   useEffect(() => {
     console.log("content view loaded");
   }, []);
 
   return (
-    <a className="fab" id="accessibilityFab" href="#accessibilityMenu">
+    <button className="fab" id="accessibilityFab" onClick={onClick}>
       fab
-    </a>
+    </button>
   );
-}
+};
+
+export default Fab;

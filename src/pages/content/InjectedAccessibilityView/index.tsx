@@ -11,7 +11,11 @@ document.body.append(root);
 
 createRoot(root).render(
   <>
-    <Fab />
+    <Fab
+      onClick={() => {
+        console.log("");
+      }}
+    />
     <Menu />
   </>
 );
