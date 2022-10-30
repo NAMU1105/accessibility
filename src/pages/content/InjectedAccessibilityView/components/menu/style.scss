@@ -7,6 +7,7 @@
   right: 0;
   top: 0;
   background-color: rgb(214, 193, 233);
+  z-index: 99999;
 
   &:target {
     visibility: visible;
