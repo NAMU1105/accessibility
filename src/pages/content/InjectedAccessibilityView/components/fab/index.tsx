@@ -13,7 +13,12 @@ const Fab: React.FC<Props> = (props: Props) => {
   }, []);
 
   return (
-    <button className="fab" id="accessibilityFab" onClick={onClick}>
+    <button
+      role="button"
+      className="fab"
+      id="accessibilityFab"
+      onClick={onClick}
+    >
       fab
     </button>
   );
