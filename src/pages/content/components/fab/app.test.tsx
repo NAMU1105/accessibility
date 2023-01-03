@@ -4,7 +4,7 @@ import App from "@pages/content/components/fab/app";
 describe("appTest", () => {
   test("render text", () => {
     // given
-    const text = "content view";
+    const text = "fab";
 
     // when
     render(<App />);
