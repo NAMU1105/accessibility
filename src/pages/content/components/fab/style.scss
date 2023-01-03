@@ -1,0 +1,18 @@
+#accessibilityFab {
+  z-index: 99999;
+  width: 46px;
+  height: 46px;
+  border-radius: 100px;
+  background-color: rgb(189, 148, 227);
+  position: fixed;
+  bottom: 2%;
+  right: 2%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fab:hover {
+  transform: scale(1.1);
+}

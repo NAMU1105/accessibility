@@ -4,6 +4,7 @@ import path, { resolve } from "path";
 import makeManifest from "./utils/plugins/make-manifest";
 import customDynamicImport from "./utils/plugins/custom-dynamic-import";
 import addHmr from "./utils/plugins/add-hmr";
+import manifest from "./manifest";
 
 const root = resolve(__dirname, "src");
 const pagesDir = resolve(root, "pages");
@@ -12,6 +13,7 @@ const outDir = resolve(__dirname, "dist");
 const publicDir = resolve(__dirname, "public");
 
 const isDev = process.env.__DEV__ === "true";
+const isProduction = !isDev;
 
 // ENABLE HMR IN BACKGROUND SCRIPT
 const enableHmrInBackgroundScript = true;
@@ -26,24 +28,28 @@ export default defineConfig({
   },
   plugins: [
     react(),
-    makeManifest(),
+    makeManifest(manifest),
     customDynamicImport(),
     addHmr({ background: enableHmrInBackgroundScript, view: true }),
   ],
   publicDir,
   build: {
     outDir,
-    sourcemap: isDev,
+    /** Can slowDown build speed. */
+    // sourcemap: isDev,
+    minify: isProduction,
+    reportCompressedSize: isProduction,
     rollupOptions: {
       input: {
-        devtools: resolve(pagesDir, "devtools", "index.html"),
-        panel: resolve(pagesDir, "panel", "index.html"),
         content: resolve(pagesDir, "content", "index.ts"),
         background: resolve(pagesDir, "background", "index.ts"),
         contentStyle: resolve(pagesDir, "content", "style.scss"),
         popup: resolve(pagesDir, "popup", "index.html"),
-        newtab: resolve(pagesDir, "newtab", "index.html"),
         options: resolve(pagesDir, "options", "index.html"),
+      },
+      watch: {
+        include: ["src/**", "vite.config.ts"],
+        exclude: ["node_modules/**", "src/**/*.spec.ts"],
       },
       output: {
         entryFileNames: "src/pages/[name]/index.js",
@@ -52,7 +58,7 @@ export default defineConfig({
           : "assets/js/[name].[hash].js",
         assetFileNames: (assetInfo) => {
           const { dir, name: _name } = path.parse(assetInfo.name);
-          const assetFolder = getLastElement(dir.split("/"));
+          const assetFolder = dir.split("/").at(-1);
           const name = assetFolder + firstUpperCase(_name);
           return `assets/[ext]/${name}.chunk.[ext]`;
         },
@@ -60,12 +66,6 @@ export default defineConfig({
     },
   },
 });
-
-function getLastElement<T>(array: ArrayLike<T>): T {
-  const length = array.length;
-  const lastIndex = length - 1;
-  return array[lastIndex];
-}
 
 function firstUpperCase(str: string) {
   const firstAlphabet = new RegExp(/( |^)[a-z]/, "g");
